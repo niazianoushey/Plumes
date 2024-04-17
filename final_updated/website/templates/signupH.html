@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Signup</title>
+    <style>
+        body{
+            background-color: #f9f9f9;
+        }
+        .container {
+            position: relative;
+            width: 450px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            float: left; /* Move container to the left */
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 68%; /* Move background image to the right */
+            background-image: url('signup.jpeg');
+            background-size: contain;
+            z-index: -1; /* Ensure background image is behind other content */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .signup-form input {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .signup-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #99C1D6;
+            color: #fff;
+        }
+        .signup-form button:hover {
+            background-color: #0056b3;
+        }
+        .signup-form .social-login {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .signup-form .social-login button {
+            margin-top: 10px;
+            background-color: #99C1D6; /* Facebook blue */
+        }
+        .signup-form .social-login button.google {
+            background-color: #db4437; /* Google red */
+        }
+        .center{
+            text-align: center;
+        }
+        h2{
+            color: #a09e9e;
+            font-size: medium;
+        }
+        h3{
+            color: black;
+            font-size: medium;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        .button {
+            background-color: #99C1D6; /* White background color for the button */
+            color: #ffffff; /* Blue text color for the button */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Add padding to the button */
+            font-size: 16px; /* Set font size */
+            border-radius: 5px; /* Add rounded corners to the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s, color 0.3s; /* Add smooth transition for hover effect */
+            text-decoration: none; /* Remove default link underline */
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #ffffff; /* Darker blue background color on hover */
+            color: #99C1D6; /* White text color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    {% include "includes/messages.html" %}
+    <div class="container">
+        <h1>Sign up</h1>
+        <h3>Already have an Account <a href="{{url_for('auth.login')}}"> Login</a></h3>
+        <form class="signup-form" action="{{url_for('auth.sign_up')}}" method="POST">
+            <h2>Full Name</h2>
+            <input type="text" placeholder="Enter your Full Name" name="name" required>
+            <h2>Email Address</h2>
+            <input type="email" placeholder="Enter your Email Address" name="email" required>
+            <h2>Password</h2>
+            <input type="password" placeholder="Create your Password" name="password" required>
+            <input type="submit" value="Create Account" class="button">
+        </form>
+        <div class="social-login center">
+            <p>------ Or sign up using ------</p>
+            <button class="google">Sign Up with Google</button>
+            <button class="facebook">Sign Up with Facebook</button>
+        </div>
+    </div>
+    <div class="background-image"></div> <!-- Background image -->
+</body>
+</html>

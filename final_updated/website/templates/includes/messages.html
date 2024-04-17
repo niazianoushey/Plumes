@@ -1,0 +1,47 @@
+<style>
+    /* CSS styles for flash messages */
+    .success {
+        color: green;
+    }
+    
+    .error {
+        color: red;
+    }
+    
+    .info {
+        color: blue;
+    }
+    
+    .flashes {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .flash {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flashes">
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<script>
+   
+    setTimeout(function() {
+        var flashes = document.querySelectorAll('.flash');
+        flashes.forEach(function(flash) {
+            flash.style.display = 'none';
+        });
+    }, 2000);
+</script>

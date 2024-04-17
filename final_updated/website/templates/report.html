@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #004a72;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .severity {
+            color: #ff0000; /* Red color for severity */
+        }
+        .back-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% include "includes/messages.html" %}
+        <h1>Patient Report</h1>
+        <table>
+            <tr>
+                <th>Patient Name</th>
+                <td>XXX</td> <!-- Replace with actual patient name -->
+            </tr>
+            <tr>
+                <th>Patient ID</th>
+                <td>000000</td> <!-- Replace with actual patient ID -->
+            </tr>
+            <tr>
+                <th>Severity of Diabetic Retinopathy</th>
+                <td class="severity">Moderate</td> <!-- Replace with severity level -->
+            </tr>
+        </table>
+        <div class="back-button">
+            <button onclick="window.open('recordsH.html', '_blank')">Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

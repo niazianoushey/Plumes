@@ -1,0 +1,111 @@
+<!-- data science front-end p1 -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            VisionFit
+        </title>
+
+        <style>
+            body {
+                background-image: url('bg1.jpeg');
+                /* You can specify additional background properties like size, position, etc. */
+            }
+            .rectangle {
+                width: 110px; /* Width of the rectangle */
+                height: 20px; /* Height of the rectangle */
+                background-color: #f0f0f0; /* Background color of the rectangle */
+                border: 1px solid #000000; /* Border properties of the rectangle */
+                padding: 20px; /* Padding inside the rectangle */
+                text-align: center; /* Center align the text */
+                font-family: Arial, sans-serif; /* Font family for the text */
+            }
+            .wrectangle {
+                width: 100%; /* Width of the rectangle */
+                height: 60px; /* Height of the rectangle */
+                background-color: #f0f0f0; /* Background color of the rectangle */
+                margin-top: 50px; /* Add margin-top to move the rectangle down */
+            }
+            .brectangle{
+                width: 100%; /* Width of the rectangle */
+                height: 250px; /* Height of the rectangle */
+                background-color: #c7c0a978; /* Background color of the rectangle */
+                margin-top: 450px; /* Add margin-top to move the rectangle down */
+                text-align: center;
+            }
+            h1 {text-align: center;
+                font-size: 34px;
+                margin-top: 50px;
+            }
+            .right {float: right}
+            .down {margin-top: 150px;}
+
+            .brectangle {
+                background-color: #c7c0a987; /* Blue background color */
+                padding: 20px; /* Add padding to create space around the content */
+                text-align: center; /* Center align the content */
+            }
+            .button {
+                background-color: #99C1D6; /* White background color for the button */
+                color: #ffffff; /* Blue text color for the button */
+                border: none; /* Remove button border */
+                padding: 10px 20px; /* Add padding to the button */
+                font-size: 16px; /* Set font size */
+                border-radius: 5px; /* Add rounded corners to the button */
+                cursor: pointer; /* Change cursor to pointer on hover */
+                transition: background-color 0.3s, color 0.3s; /* Add smooth transition for hover effect */
+                text-decoration: none; /* Remove default link underline */
+            }
+            .button:hover {
+                background-color: #ffffff; /* Darker blue background color on hover */
+                color: #99C1D6; /* White text color on hover */
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!-- your elements here -->
+        <header>
+
+            <div class="wrectangle">
+            {% if not current_user.is_authenticated %}
+            <div class="button-container right">
+                <a href="{{url_for('auth.login')}}" class="button">Log in/Sign up (Clinical)</a>
+            </div>
+
+            <div class="button-container right">
+                <a href="{{url_for('auth.login_patient')}}" class="button">Log in/Sign up (Patient)</a>
+            </div>
+
+            
+            {% else %}
+            
+
+            <div class="button-container right">
+                <a href="{{url_for('auth.logout')}}" class="button">Logout</a>
+            </div>
+
+            {% if current_user.role == 'hospital' %}
+            <div class="button-container right">
+                <a href="{{url_for('main.hospital_dashboard_View')}}" class="button">Dashboard</a>
+            </div>
+            {% else %}
+            <div class="button-container right">
+                <a href="{{url_for('main.patient_dashboard_View')}}" class="button">Dashboard</a>
+            </div>
+            
+            {% endif %}
+            {% endif %}
+            <img src="{{ url_for('static', filename='images/logo.png')}}" alt="visionfit logo"  height="60px" width="60px"/>
+            </div>
+        </header>
+        {% include "includes/messages.html" %}
+
+            <div class="brectangle button-container">
+            <h1>Early Detection To Diabetic Retinopathy!</h1>
+            <a href="{{url_for('auth.sign_up_patient')}}" class="button">Book an Appointment</a>
+            </div>
+
+    </body>
+</html>

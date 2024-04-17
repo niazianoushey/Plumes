@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: #99C1D6;
+            color: #fff;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: #fff; /* Change the color to white */
+            text-decoration: none; /* Remove underline */
+        }
+        
+        .sidebar a:hover {
+            color: #ffcc00; /* Change the color on hover */
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .subheading {
+            margin-top: 20px;
+            color: #fff;
+        }
+        h1 {
+            color: #fff;
+        }
+        h2 {color: #004a72;
+        }
+        h3 {color: rgb(98, 98, 98);
+        }
+        h4{
+            color: #99C1D6;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 75%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #99C1D6;
+        }
+        .search-bar {
+            float: right;
+            margin-top: 20px;
+        }
+        .search-bar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        .search-bar button {
+            padding: 8px;
+            border: none;
+            background-color: #99C1D6;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .profile-picture {
+            border-radius: 50%; /* Make the image round */
+            width: 30px;
+            height: 30px;
+            margin-left: 5px; /* Add some space between the image and the search bar */
+        }
+        .justify{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>VisionFit</h1>
+        <br>
+        <div class="subheading">
+            {% include "includes/sidemenu-patient.html" %}
+        </div>
+    </div>
+    <div class="main-content">
+        <div>
+            <h2>VisionFit, Diabetic Retinopathy Specialists</h2>
+            <br>
+        </div>
+        <div class="justify">
+            <img src="{{ url_for('static', filename='images/profile.png')}}" alt="example profile" width="700" height="700">
+        </div>
+        {% include "includes/messages.html" %}
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+            <img src="{{ url_for('static', filename='images/profilep.png')}}" alt="Profile Picture" class="profile-picture">
+        </div>        
+    </div>
+</body>
+</html>
